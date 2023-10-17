@@ -1,5 +1,7 @@
 from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
+from datetime import date, datetime
+
 
 
 env = Environment(
@@ -7,18 +9,16 @@ env = Environment(
     autoescape=select_autoescape(['html', 'xml'])
 )
 
-template = env.get_template('template.html')
-
+template = env.get_template('index.html')
+past_date = datetime(1920, 4, 10)
+current_date = datetime.now()
+time_difference = current_date - past_date
+years_difference = time_difference.days // 365
 rendered_page = template.render(
-    cap1_title="Красная кепка",
-    cap1_text="$ 100.00",
-    cap2_title="Чёрная кепка",
-    cap2_text="$ 120.00",
-    cap3_title="Ещё одна чёрная кепка",
-    cap3_text="$ 90.00",
+    years_old=years_difference,
 )
 
-with open('template.html', 'w', encoding="utf8") as file:
+with open('index.html', 'w', encoding="utf8") as file:
     file.write(rendered_page)
 
 server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
