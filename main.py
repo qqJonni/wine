@@ -3,11 +3,13 @@ from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 import pandas
 import pprint
+from collections import defaultdict
 
 
 data = pandas.read_excel('wine2.xlsx')
 
-result = {}
+result = defaultdict(list)
+
 for _, row in data.iterrows():
     category = row['Категория']
     product = {
@@ -16,10 +18,9 @@ for _, row in data.iterrows():
         'Цена': row['Цена'],
         'Картинка': row['Картинка']
     }
-    if category in result:
-        result[category].append(product)
-    else:
-        result[category] = [product]
+    result[category].append(product)
+
+result = dict(result)
 
 pprint.pprint(result)
 
