@@ -2,10 +2,29 @@ from http.server import HTTPServer, SimpleHTTPRequestHandler
 from jinja2 import Environment, FileSystemLoader, select_autoescape
 from datetime import datetime
 import pandas
+import pprint
+
+
+data = pandas.read_excel('wine2.xlsx')
+
+result = {}
+for _, row in data.iterrows():
+    category = row['Категория']
+    product = {
+        'Название': row['Название'],
+        'Сорт': row['Сорт'],
+        'Цена': row['Цена'],
+        'Картинка': row['Картинка']
+    }
+    if category in result:
+        result[category].append(product)
+    else:
+        result[category] = [product]
+
+pprint.pprint(result)
 
 
 excel_data_df = pandas.read_excel('wine.xlsx', sheet_name='Лист1', usecols=['Название', 'Сорт', 'Цена', 'Картинка'])
-print(excel_data_df)
 
 
 def format_years(number):
