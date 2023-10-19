@@ -20,7 +20,7 @@ def format_years(number):
         return f"{number} лет"
 
 
-data = pandas.read_excel('wine2.xlsx')
+data = pandas.read_excel('wine.xlsx')
 
 result = defaultdict(list)
 
@@ -63,4 +63,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     data = pandas.read_excel(args.filename)
-# python main.py wine2.xlsx
+# python main.py wine.xlsx
