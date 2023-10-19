@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     rendered_page = template.render(years_old=f'Мы уже {format_years(years_difference)} с вами', result=result)
 
-    with open('index.html', 'w', encoding="utf8") as file:
+    with open('template.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
 
     server = HTTPServer(('0.0.0.0', 8000), SimpleHTTPRequestHandler)
