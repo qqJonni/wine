@@ -25,10 +25,10 @@ if __name__ == '__main__':
     parser.add_argument('filename', help='The Excel filename')
     args = parser.parse_args()
 
-    data = pandas.read_excel(args.filename)
-    result = defaultdict(list)
+    table = pandas.read_excel(args.filename)
+    default_dict = defaultdict(list)
 
-    for _, row in data.iterrows():
+    for _, row in table.iterrows():
         category = row['Категория']
         product = {
             'Название': row['Название'],
@@ -36,9 +36,9 @@ if __name__ == '__main__':
             'Цена': row['Цена'],
             'Картинка': row['Картинка']
         }
-        result[category].append(product)
+        default_dict[category].append(product)
 
-    result = dict(result)
+    result = dict(default_dict)
 
     env = Environment(
         loader=FileSystemLoader('.'),
