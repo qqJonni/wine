@@ -17,6 +17,7 @@ pip install -r requirements.txt
 ```sh
 python main.py <название файла>
 ```
+В данном приложении файл wine.xlsx используется как образец
 
 ## Цели проекта
 
