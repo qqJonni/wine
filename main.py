@@ -26,7 +26,7 @@ if __name__ == '__main__':
     args = parser.parse_args()
 
     table = pandas.read_excel(args.filename)
-    dictionary_object = defaultdict(list)
+    objects = defaultdict(list)
 
     for _, row in table.iterrows():
         category = row['Категория']
@@ -36,9 +36,9 @@ if __name__ == '__main__':
             'Цена': row['Цена'],
             'Картинка': row['Картинка']
         }
-        dictionary_object[category].append(product)
+        objects[category].append(product)
 
-    wine_dictionary = dict(dictionary_object)
+    wines = dict(objects)
 
     env = Environment(
         loader=FileSystemLoader('.'),
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     years_difference = current_date.year - past_date.year
 
-    rendered_page = template.render(years_old=f'Мы уже {get_name_year(years_difference)} с вами', result=wine_dictionary)
+    rendered_page = template.render(years_old=f'Мы уже {get_name_year(years_difference)} с вами', result=wines)
 
     with open('template.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
