@@ -6,7 +6,7 @@ from collections import defaultdict
 import argparse
 
 
-def format_years(number):
+def get_name_year(number):
     if number % 100 in [11, 12, 13, 14]:
         return f"{number} лет"
 
@@ -51,7 +51,7 @@ if __name__ == '__main__':
 
     years_difference = current_date.year - past_date.year
 
-    rendered_page = template.render(years_old=f'Мы уже {format_years(years_difference)} с вами', result=wine_dictionary)
+    rendered_page = template.render(years_old=f'Мы уже {get_name_year(years_difference)} с вами', result=wine_dictionary)
 
     with open('template.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)
