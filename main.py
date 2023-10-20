@@ -22,7 +22,7 @@ def get_name_year(number):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Generate website from wine Excel data.')
-    parser.add_argument('filename', help='The Excel filename')
+    parser.add_argument('filename', help='The Excel filename', default='wine.xlsx')
     args = parser.parse_args()
 
     table = pandas.read_excel(args.filename)
