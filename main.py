@@ -47,8 +47,9 @@ if __name__ == '__main__':
 
     template = env.get_template('index.html')
     past_date = datetime(1920, 4, 10)
-    time_difference = datetime.now() - past_date
-    years_difference = time_difference.days // 365
+    current_date = datetime.now()
+
+    years_difference = current_date.year - past_date.year
 
     rendered_page = template.render(years_old=f'Мы уже {format_years(years_difference)} с вами', result=wine_dictionary)
 
