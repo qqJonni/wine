@@ -45,7 +45,7 @@ if __name__ == '__main__':
         autoescape=select_autoescape(['html', 'xml'])
     )
 
-    template = env.get_template('index.html')
+    template = env.get_template('template.html')
     past_date = datetime(1920, 4, 10)
     current_date = datetime.now()
 
