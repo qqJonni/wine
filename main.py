@@ -52,7 +52,7 @@ if __name__ == '__main__':
 
     years_difference = current_date.year - past_date.year
 
-    rendered_page = template.render(years_old=f'Мы уже {get_name_year(years_difference)} с вами', result=wines, wines=wines)
+    rendered_page = template.render(years_old=f'Мы уже {get_name_year(years_difference)} с вами', table=wines, wines=wines)
 
     with open('index.html', 'w', encoding="utf8") as file:
         file.write(rendered_page)

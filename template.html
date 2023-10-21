@@ -128,7 +128,7 @@
                 <img src="images/{{ product['Картинка'] }}" alt="Image" class="img-fluid">
 
 
-                {% if category != 'Напитки' %}
+                {% if category != ['Напитки'] %}
                     {% if product['Сорт'] %}
                         <p>Сорт винограда - {{ product['Сорт'] }}</p>
                     {% endif %}
