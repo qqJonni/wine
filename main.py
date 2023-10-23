@@ -36,7 +36,6 @@ if __name__ == '__main__':
             'Цена': row['Цена'],
             'Картинка': row['Картинка']
         }
-        print(product)
         objects[category].append(product)
 
     wines = dict(objects)
